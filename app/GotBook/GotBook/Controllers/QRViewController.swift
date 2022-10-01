@@ -57,7 +57,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         let output = AVCaptureMetadataOutput()
         self.captureSession?.addOutput(output)
         output.setMetadataObjectsDelegate(self, queue: .main)
-        output.metadataObjectTypes = [.qr]
+        output.metadataObjectTypes = [.ean13]
 
         // init video preview layer
         self.videoLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
@@ -98,8 +98,8 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
       self.qrFrameView?.frame = CGRect.zero
       return
     }
-    if meta.type == .qr {
-      // draw box around QR code
+    if meta.type == .ean13 {
+      // draw box around ISBN barcode (EAN-13)
       let barcode = self.videoLayer?.transformedMetadataObject(for: meta) as! AVMetadataMachineReadableCodeObject
       self.qrFrameView?.frame = barcode.bounds
       // display URL
