@@ -468,6 +468,7 @@
 				DEVELOPMENT_TEAM = 4HLUY83ADB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GotBook/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Got Book?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -497,6 +498,7 @@
 				DEVELOPMENT_TEAM = 4HLUY83ADB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GotBook/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Got Book?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
