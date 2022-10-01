@@ -1,24 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U2v-sv-bUf">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Scan QR Code-->
+        <scene sceneID="Xha-iF-Jpz">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController title="Scan QR Code" id="U2v-sv-bUf" customClass="QRViewController" customModule="GotBook" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PPe-rQ-5ZP">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJV-Ey-JdA">
+                                <rect key="frame" x="0.0" y="780" width="390" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="website address" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKO-ql-oaY">
+                                        <rect key="frame" x="10" y="9.9999999999999982" width="370" height="22.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1697378755" green="0.47163844110000003" blue="0.76116579770000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="UKO-ql-oaY" firstAttribute="top" secondItem="lJV-Ey-JdA" secondAttribute="top" constant="10" id="0PM-7r-UGq"/>
+                                    <constraint firstItem="UKO-ql-oaY" firstAttribute="leading" secondItem="lJV-Ey-JdA" secondAttribute="leading" constant="10" id="Vsl-xv-5Pd"/>
+                                    <constraint firstAttribute="trailing" secondItem="UKO-ql-oaY" secondAttribute="trailing" constant="10" id="ZIN-N1-DNp"/>
+                                    <constraint firstAttribute="height" constant="64" id="jCq-c4-nY7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bt2-jm-ELk">
+                                <rect key="frame" x="0.0" y="47" width="390" height="733"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BGP-BY-LaE"/>
+                        <color key="backgroundColor" white="0.08953296895" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lJV-Ey-JdA" firstAttribute="bottom" secondItem="PPe-rQ-5ZP" secondAttribute="bottom" id="5I7-3q-EpE"/>
+                            <constraint firstItem="lJV-Ey-JdA" firstAttribute="leading" secondItem="BGP-BY-LaE" secondAttribute="leading" id="L4r-Gy-wIq"/>
+                            <constraint firstItem="lJV-Ey-JdA" firstAttribute="trailing" secondItem="BGP-BY-LaE" secondAttribute="trailing" id="LKA-Yl-D0n"/>
+                            <constraint firstItem="lJV-Ey-JdA" firstAttribute="top" secondItem="Bt2-jm-ELk" secondAttribute="bottom" id="ezd-Iz-tf0"/>
+                            <constraint firstItem="Bt2-jm-ELk" firstAttribute="trailing" secondItem="BGP-BY-LaE" secondAttribute="trailing" id="kBv-Dp-YUb"/>
+                            <constraint firstItem="Bt2-jm-ELk" firstAttribute="top" secondItem="BGP-BY-LaE" secondAttribute="top" id="m4b-HE-0z8"/>
+                            <constraint firstItem="Bt2-jm-ELk" firstAttribute="leading" secondItem="BGP-BY-LaE" secondAttribute="leading" id="pUK-Dj-sMl"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8X1-eJ-yyb"/>
+                    <connections>
+                        <outlet property="videoView" destination="Bt2-jm-ELk" id="9Ip-py-7bF"/>
+                        <outlet property="websiteLabel" destination="UKO-ql-oaY" id="Qao-HI-bOS"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lvP-dq-kwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="928" y="633"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KQh-2m-66D">
+            <objects>
+                <navigationController id="3eg-1b-zey" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4J3-iD-eCl">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vo9-Bf-UCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48" y="633"/>
         </scene>
     </scenes>
 </document>
