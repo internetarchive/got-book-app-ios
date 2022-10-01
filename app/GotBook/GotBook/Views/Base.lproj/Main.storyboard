@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U2v-sv-bUf">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3eg-1b-zey">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scan QR Code-->
+        <!--Got Book?-->
         <scene sceneID="Xha-iF-Jpz">
             <objects>
-                <viewController title="Scan QR Code" id="U2v-sv-bUf" customClass="QRViewController" customModule="GotBook" sceneMemberID="viewController">
+                <viewController title="Got Book?" id="U2v-sv-bUf" customClass="QRViewController" customModule="GotBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PPe-rQ-5ZP">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="669"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJV-Ey-JdA">
-                                <rect key="frame" x="0.0" y="780" width="390" height="64"/>
+                                <rect key="frame" x="0.0" y="605" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="website address" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKO-ql-oaY">
-                                        <rect key="frame" x="10" y="9.9999999999999982" width="370" height="22.333333333333329"/>
+                                        <rect key="frame" x="10" y="9.9999999999999982" width="355" height="22.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -34,7 +35,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bt2-jm-ELk">
-                                <rect key="frame" x="0.0" y="47" width="390" height="733"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="605"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -50,7 +51,7 @@
                             <constraint firstItem="Bt2-jm-ELk" firstAttribute="leading" secondItem="BGP-BY-LaE" secondAttribute="leading" id="pUK-Dj-sMl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8X1-eJ-yyb"/>
+                    <navigationItem key="navigationItem" title="Got Book?" id="8X1-eJ-yyb"/>
                     <connections>
                         <outlet property="videoView" destination="Bt2-jm-ELk" id="9Ip-py-7bF"/>
                         <outlet property="websiteLabel" destination="UKO-ql-oaY" id="Qao-HI-bOS"/>
@@ -64,10 +65,21 @@
         <scene sceneID="KQh-2m-66D">
             <objects>
                 <navigationController id="3eg-1b-zey" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4J3-iD-eCl">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" largeTitles="YES" id="4J3-iD-eCl">
+                        <rect key="frame" x="0.0" y="47" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.1697378755" green="0.47163844110000003" blue="0.76116579770000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
+                    <connections>
+                        <segue destination="U2v-sv-bUf" kind="relationship" relationship="rootViewController" id="Qfq-uo-ZKI"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vo9-Bf-UCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

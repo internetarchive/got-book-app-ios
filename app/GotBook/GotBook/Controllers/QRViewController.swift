@@ -10,7 +10,7 @@
 
 import UIKit
 import AVFoundation
-import CoreData
+// import CoreData
 
 class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
