@@ -88,6 +88,50 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     self.qrFrameView = fview
   }
 
+  /// Removes spaces, dashes, and "ISBN" prefix if present, from a string of digits.
+  /// If older 9-digit SPN, will prepend a '0' to convert to ISBN.
+  func cleanISBN(_ text: String) -> String {
+    var temp = text.uppercased()
+    temp = temp.replacingOccurrences(of: "ISBN", with: "")
+    temp = temp.replacingOccurrences(of: " ", with: "")
+    temp = temp.replacingOccurrences(of: "-", with: "")
+    if temp.count == 9 {
+      temp = "0" + temp
+    }
+    return temp
+  }
+
+  /// Converts a clean ISBN into a version for display. (NOT USED)
+  func formatISBN(_ isbn: String) -> String {
+    // not adding dashes as it's complicated
+    return "ISBN \(isbn)"
+  }
+
+  /// Returns true if given clean ISBN string is a valid ISBN.
+  func isISBN(_ isbn: String) -> Bool {
+    // ISBN-10 may have an 'X' which we replace with 'A' as a hack
+    let isbn2 = isbn.replacingOccurrences(of: "X", with: "A")
+    // test that only 0-9 & A characters present
+    if Int(isbn2, radix: 11) != nil {
+      if isbn2.count == 10 {
+        // ISBN-10
+        // following algorithm returns true if check digit is valid
+        var s = 0, t = 0
+        isbn2.forEach { ch in
+          t += Int(String(ch), radix: 16) ?? 0
+          s += t
+        }
+        return ((s % 11) == 0)
+      }
+      else if (isbn2.count == 13) && (isbn2.hasPrefix("978") || isbn2.hasPrefix("979")) {
+        // ISBN-13
+        // not verifying check digit as this is good enough
+        return true
+      }
+    }
+    return false
+  }
+
   ////////////////////////////////////////////////////////////////////////////////////////////////////
   // MARK: - AVCaptureMetadataOutputObjectsDelegate
 
@@ -102,9 +146,10 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
       // draw box around ISBN barcode (EAN-13)
       let barcode = self.videoLayer?.transformedMetadataObject(for: meta) as! AVMetadataMachineReadableCodeObject
       self.qrFrameView?.frame = barcode.bounds
-      // display URL
+      // display ISBN
       if let text = meta.stringValue {
-        self.websiteLabel.text = text
+        let isbn = cleanISBN(text)
+        self.websiteLabel.text = isISBN(isbn) ? "ISBN \(isbn)" : "Not an ISBN"
       }
     }
   }
