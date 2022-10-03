@@ -10,41 +10,36 @@
 
 import UIKit
 import AVFoundation
-// import CoreData
+import SafariServices
 
 class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
   // UI
-  @IBOutlet weak var websiteLabel: UILabel!
   @IBOutlet weak var videoView: UIView!
+  @IBOutlet weak var isbnButton: UIButton!
 
   // class vars
-  // var detailsVC: DetailsViewController?
   var captureSession: AVCaptureSession?
   var videoLayer: AVCaptureVideoPreviewLayer?
   var qrFrameView: UIView?
+  var currentISBN: String?
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
   // MARK: - View Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.websiteLabel.text = nil
+    isbnButton.setTitle("", for: .normal)
   }
 
   override func viewDidAppear(_ animated: Bool) {
-    // super.viewWillAppear(animated) // why?
     setupVideoInput()
   }
-
-  // override func viewWillDisappear(_ animated: Bool) {
-    // self.detailsVC?.updateWebsite(self.websiteLabel.text)
-  // }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
   // MARK: - Video Setup
 
-  /// Setup video capture for QR code detection.
+  /// Setup video capture for barcode detection.
   func setupVideoInput() {
     if let captureDevice = AVCaptureDevice.default(for: .video) {
       do {
@@ -53,7 +48,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         self.captureSession = AVCaptureSession()
         self.captureSession?.addInput(input)
 
-        // setup QR output
+        // setup barcode output
         let output = AVCaptureMetadataOutput()
         self.captureSession?.addOutput(output)
         output.setMetadataObjectsDelegate(self, queue: .main)
@@ -78,7 +73,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     }
   }
 
-  /// Prepare the QR frame view that will display when QR code is detected.
+  /// Prepare the frame view that will display when barcode is detected.
   func setupFrameView() {
     let fview = UIView.init(frame: CGRect.zero)
     fview.layer.borderColor = UIColor.magenta.cgColor
@@ -87,6 +82,8 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     self.videoView.bringSubviewToFront(fview)
     self.qrFrameView = fview
   }
+
+  // MARK: - ISBN Routines
 
   /// Removes spaces, dashes, and "ISBN" prefix if present, from a string of digits.
   /// If older 9-digit SPN, will prepend a '0' to convert to ISBN.
@@ -132,6 +129,31 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     return false
   }
 
+  func showWebsite(url: String) {
+    if let aUrl = URL(string: url) {
+      let safariVC = SFSafariViewController(url: aUrl)
+      safariVC.dismissButtonStyle = .close
+      safariVC.preferredControlTintColor = .white
+      safariVC.preferredBarTintColor = self.navigationController?.navigationBar.backgroundColor
+      present(safariVC, animated: true, completion: nil)
+    }
+  }
+
+  /// Opens a web page in Safari that will check if ISBN is in Internet Archive.
+  func viewPageForISBN(_ isbn: String) {
+    showWebsite(url: "https://archive.org/want/?id=\(isbn)&mode=donation_book")
+  }
+
+  /// Button action to open Safari with current ISBN.
+  @IBAction func clickISBN() {
+    if let isbn = currentISBN {
+      viewPageForISBN(isbn)
+      // clear button
+      isbnButton.setTitle("", for: .normal)
+      self.currentISBN = nil
+    }
+  }
+
   ////////////////////////////////////////////////////////////////////////////////////////////////////
   // MARK: - AVCaptureMetadataOutputObjectsDelegate
 
@@ -149,7 +171,14 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
       // display ISBN
       if let text = meta.stringValue {
         let isbn = cleanISBN(text)
-        self.websiteLabel.text = isISBN(isbn) ? "ISBN \(isbn)" : "Not an ISBN"
+        if isISBN(isbn) {
+          isbnButton.setTitle("ISBN \(isbn)", for: .normal)
+          currentISBN = isbn
+        }
+        else {
+          isbnButton.setTitle("Not an ISBN", for: .normal)
+          currentISBN = nil
+        }
       }
     }
   }
