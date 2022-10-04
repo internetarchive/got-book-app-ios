@@ -14,11 +14,34 @@
             <objects>
                 <viewController title="Got Book?" id="U2v-sv-bUf" customClass="QRViewController" customModule="GotBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PPe-rQ-5ZP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="721"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6l-po-XNm">
+                                <rect key="frame" x="0.0" y="143" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place book barcode below:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGp-mk-ze2">
+                                        <rect key="frame" x="20" y="10" width="335" height="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="tintColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DdD-sf-u0Y"/>
+                                    <constraint firstItem="gGp-mk-ze2" firstAttribute="top" secondItem="u6l-po-XNm" secondAttribute="top" constant="10" id="F5y-2V-VS5"/>
+                                    <constraint firstItem="gGp-mk-ze2" firstAttribute="leading" secondItem="u6l-po-XNm" secondAttribute="leading" constant="20" id="GlT-kR-v9x"/>
+                                    <constraint firstAttribute="trailing" secondItem="gGp-mk-ze2" secondAttribute="trailing" constant="20" id="QOg-xV-AcV"/>
+                                    <constraint firstAttribute="bottom" secondItem="gGp-mk-ze2" secondAttribute="bottom" constant="10" id="VM2-CF-OZu"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bt2-jm-ELk">
+                                <rect key="frame" x="0.0" y="193" width="375" height="519"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJV-Ey-JdA">
-                                <rect key="frame" x="0.0" y="621" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="712" width="375" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="bk1-NP-MdN">
                                         <rect key="frame" x="30" y="20" width="315" height="60"/>
@@ -43,20 +66,19 @@
                                     <constraint firstAttribute="bottom" secondItem="bk1-NP-MdN" secondAttribute="bottom" constant="20" id="k9C-43-IX9"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bt2-jm-ELk">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BGP-BY-LaE"/>
                         <color key="backgroundColor" white="0.08953296895" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lJV-Ey-JdA" firstAttribute="bottom" secondItem="PPe-rQ-5ZP" secondAttribute="bottom" id="5I7-3q-EpE"/>
+                            <constraint firstItem="Bt2-jm-ELk" firstAttribute="top" secondItem="u6l-po-XNm" secondAttribute="bottom" id="IaS-Ev-QL5"/>
+                            <constraint firstItem="u6l-po-XNm" firstAttribute="top" secondItem="BGP-BY-LaE" secondAttribute="top" id="KJh-6D-5Qt"/>
                             <constraint firstItem="lJV-Ey-JdA" firstAttribute="leading" secondItem="BGP-BY-LaE" secondAttribute="leading" id="L4r-Gy-wIq"/>
                             <constraint firstItem="lJV-Ey-JdA" firstAttribute="trailing" secondItem="BGP-BY-LaE" secondAttribute="trailing" id="LKA-Yl-D0n"/>
+                            <constraint firstItem="u6l-po-XNm" firstAttribute="trailing" secondItem="BGP-BY-LaE" secondAttribute="trailing" id="Q3q-jN-0VW"/>
                             <constraint firstItem="lJV-Ey-JdA" firstAttribute="top" secondItem="Bt2-jm-ELk" secondAttribute="bottom" id="ezd-Iz-tf0"/>
                             <constraint firstItem="Bt2-jm-ELk" firstAttribute="trailing" secondItem="BGP-BY-LaE" secondAttribute="trailing" id="kBv-Dp-YUb"/>
-                            <constraint firstItem="Bt2-jm-ELk" firstAttribute="top" secondItem="BGP-BY-LaE" secondAttribute="top" id="m4b-HE-0z8"/>
+                            <constraint firstItem="u6l-po-XNm" firstAttribute="leading" secondItem="BGP-BY-LaE" secondAttribute="leading" id="kad-JZ-WFe"/>
                             <constraint firstItem="Bt2-jm-ELk" firstAttribute="leading" secondItem="BGP-BY-LaE" secondAttribute="leading" id="pUK-Dj-sMl"/>
                         </constraints>
                     </view>
@@ -70,22 +92,52 @@
             </objects>
             <point key="canvasLocation" x="927.20000000000005" y="632.51231527093603"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav View Controller-->
         <scene sceneID="KQh-2m-66D">
             <objects>
-                <navigationController id="3eg-1b-zey" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="4J3-iD-eCl">
-                        <rect key="frame" x="0.0" y="47" width="375" height="44"/>
+                <navigationController id="3eg-1b-zey" customClass="NavViewController" customModule="GotBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="4J3-iD-eCl">
+                        <rect key="frame" x="0.0" y="47" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.1843137255" green="0.1843137255" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="30"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                            <textAttributes key="largeTitleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                            <barButtonItemAppearance key="buttonAppearance">
+                                <barButtonItemStateAppearance key="normal">
+                                    <textAttributes key="titleTextAttributes">
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textAttributes>
+                                </barButtonItemStateAppearance>
+                                <barButtonItemStateAppearance key="highlighted"/>
+                                <barButtonItemStateAppearance key="disabled"/>
+                                <barButtonItemStateAppearance key="focused"/>
+                            </barButtonItemAppearance>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                            <textAttributes key="largeTitleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <connections>
                         <segue destination="U2v-sv-bUf" kind="relationship" relationship="rootViewController" id="Qfq-uo-ZKI"/>
