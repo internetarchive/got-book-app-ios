@@ -76,8 +76,8 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
   /// Prepare the frame view that will display when barcode is detected.
   func setupFrameView() {
     let fview = UIView.init(frame: CGRect.zero)
-    fview.layer.borderColor = UIColor.magenta.cgColor
-    fview.layer.borderWidth = 2
+    fview.layer.borderColor = UIColor.red.cgColor
+    fview.layer.borderWidth = 4
     self.videoView.addSubview(fview)
     self.videoView.bringSubviewToFront(fview)
     self.qrFrameView = fview
@@ -167,7 +167,8 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     if meta.type == .ean13 {
       // draw box around ISBN barcode (EAN-13)
       let barcode = self.videoLayer?.transformedMetadataObject(for: meta) as! AVMetadataMachineReadableCodeObject
-      self.qrFrameView?.frame = barcode.bounds
+      // draw a slightly larger box
+      self.qrFrameView?.frame = CGRectInset(barcode.bounds, -2, -2)
       // display ISBN
       if let text = meta.stringValue {
         let isbn = cleanISBN(text)
