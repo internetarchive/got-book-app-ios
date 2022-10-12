@@ -1,9 +1,12 @@
-## 
+## got-book-app-ios
 
 ### Got Book?
 
-A mobile app to check whether the Internet Archive has a book or not.
+An iOS mobile app to check whether the Internet Archive has a book or not.
 
+For now, this will scan ISBN barcodes, then open a webpage with info. May in the future support OCR and alternative IDs.
+
+Questions? Ask @carlg in Archive's Slack.
 
 
 ## License
